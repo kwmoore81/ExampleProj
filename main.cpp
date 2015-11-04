@@ -39,7 +39,17 @@ void main()
 			acc += sfw::getDeltaTime();
 			//sfw::drawString(d, "TIME 4 FUN", 400, 300, 120, 80, acc * 145, '\0', WHITE);
 			
-					sfw::drawTexture(d, 60, 300, 100, 64, 0, true, 0);
+
+					
+				
+					if (sfw::getMouseButton(MOUSE_BUTTON_RIGHT))
+					{
+						sfw::drawTexture(d, 60, 300, 100, 64, 0, true, 1);
+					}
+					else
+					{
+						sfw::drawTexture(d, 60, 300, 100, 64, 0, true, 0);
+					}
 			
 			//sfw::drawString(d, "2", 30, 300, 100, 64);
 			//sfw::drawString(d, "12", 400, 600 - 32, 24, 24);

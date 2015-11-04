@@ -28,16 +28,22 @@ NOTE: YOU MUST CALL initContext for any of the functions to work!
 ************************/
 
 // Uses GLFW keycodes, research for additional options.
-#define KEY_UP		262
-#define KEY_DOWN	263
-#define KEY_LEFT	264
-#define KEY_RIGHT	265
+#define KEY_ESCAPE    256
+#define KEY_ENTER	  257
+#define KEY_TAB		  258
+#define KEY_BACKSPACE 259
+
+#define KEY_RIGHT     262
+#define KEY_LEFT	  263
+#define KEY_DOWN	  264
+#define KEY_UP		  265
+
 #define MOUSE_BUTTON_RIGHT	1
 #define MOUSE_BUTTON_LEFT	0
 
 // every 2 hexits corresponds to an 8-bit color component value.
 // look at the following values to intuit what that means.
-// In RGBA color format hex codes
+// In RGBA color format
 #define WHITE	 0xffffffff
 #define BLACK    0x000000ff
 #define CYAN	 0x00ffffff
