@@ -4,14 +4,15 @@
 
 
 
+
 void main()
 {
 	sfw::initContext(800, 600, "NSFW Draw");
 
-	unsigned d = sfw::loadTextureMap("./textures/purpleship2.png", 2, 1);
-	//unsigned d = sfw::loadTextureMap("./textures/fontmap.png",16,16);
-	//unsigned r = sfw::loadTextureMap("./textures/background.jpg");
-	unsigned r = sfw::loadTextureMap("./textures/space.jpg");
+	unsigned enemy = sfw::loadTextureMap("./textures/enemyship.png", 9, 1);
+	unsigned d = sfw::loadTextureMap("./textures/playership.png", 8, 1);
+	unsigned bullet = sfw::loadTextureMap("./textures/bullet.png");
+	unsigned r = sfw::loadTextureMap("./textures/space800x600.jpg");
 	unsigned asb = sfw::loadTextureMap("./textures/asteroidbelt.png");
 	unsigned neb = sfw::loadTextureMap("./textures/nebula.png");
 	unsigned u = sfw::loadTextureMap("./textures/crosshair.png");
@@ -20,7 +21,11 @@ void main()
 	float xSpd = 0;
 	float ySpd = 0;
 	float sX = 60;
+	float eX = 660;
+	float eY = 300;
 	float sY = 300;
+	float bX = sX + 70;
+	float bY = sY + 3;
 	float sYD = sfw::getDeltaTime();
 	float acc = 0;
 	char c = '\0';
@@ -30,16 +35,16 @@ void main()
 	float ab = b;
 	float ac = 0;
 	float ad = 1920;
-
+	bool fire = false;
 	sfw::setBackgroundColor(WHITE);
-
+		
 	while (sfw::stepContext())
 	{
 
 		sfw::drawTexture(r, a, 600, 800, 600, 0, false, 0, WHITE);
 		sfw::drawTexture(r, b, 600, 800, 600, 0, false, 0, WHITE);
-		sfw::drawTexture(asb, aa, 600, 2024, 600, 0, false, 0, BLACK);
-		sfw::drawTexture(asb, ab, 600, 2024, 600, 0, false, 0, BLACK);
+		sfw::drawTexture(asb, aa, 600, 2024, 600, 0, false, 0, 0x777700ff);
+		sfw::drawTexture(asb, ab, 600, 2024, 600, 0, false, 0, 0x777700ff);
 		sfw::drawTexture(neb, ac, 600, 1920, 1080, 0, false, 0, 0xffffff22);
 		sfw::drawTexture(neb, ad, 600, 1920, 1080, 0, false, 0, 0xffffff22);
 		acc += sfw::getDeltaTime();
@@ -51,13 +56,26 @@ void main()
 
 		// pX += xSpeed * deltaTime;
 		// pY += ySpeed * deltaTime;
-
+		int temp = 0;
+		if (sfw::getMouseButton(MOUSE_BUTTON_RIGHT))
+		{
+			temp = temp + 1;
+		}
 
 		//sfw::drawString(d, "TIME 4 FUN", 400, 300, 120, 80, acc * 145, '\0', WHITE);
 		sX += xSpd * sfw::getDeltaTime();
 		sY += ySpd * sfw::getDeltaTime();
-		sfw::drawTexture(d, sX, sY, 100, 64, 0, true, acc * 15);
+		sfw::drawTexture(enemy, eX--, 300, 128, 128, 0, true, acc * 15);
+		sfw::drawTexture(d, sX, sY, 128, 128, 0, true, acc * 15);
+		if (sfw::getKey(257))
+		{
+			sfw::drawTexture(bullet, bX * acc, bY, 64, 64, 0);
+		}
 
+		if (fire = true)
+		{
+			
+		}
 
 		if (sfw::getKey(87) || sfw::getKey(83) || sfw::getKey(65) || sfw::getKey(68))
 		{
