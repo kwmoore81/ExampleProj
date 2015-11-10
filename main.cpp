@@ -61,23 +61,15 @@ void main()
 		{
 			temp = temp + 1;
 		}
-
+		
 		//sfw::drawString(d, "TIME 4 FUN", 400, 300, 120, 80, acc * 145, '\0', WHITE);
 		sX += xSpd * sfw::getDeltaTime();
 		sY += ySpd * sfw::getDeltaTime();
 		sfw::drawTexture(enemy, eX--, 300, 128, 128, 0, true, acc * 15);
 		sfw::drawTexture(d, sX, sY, 128, 128, 0, true, acc * 15);
-		if (sfw::getKey(257))
-		{
-			sfw::drawTexture(bullet, bX * acc, bY, 64, 64, 0);
-		}
+	
 
-		if (fire = true)
-		{
-			
-		}
-
-		if (sfw::getKey(87) || sfw::getKey(83) || sfw::getKey(65) || sfw::getKey(68))
+		if (sfw::getKey(87) || sfw::getKey(83) || sfw::getKey(65) || sfw::getKey(68) || sfw::getKey(257))
 		{
 
 			if (sfw::getKey(87))//w
@@ -100,6 +92,11 @@ void main()
 				xSpd = 200;
 
 			}
+			if (sfw::getKey(257))
+			{
+				fire = true;
+			}
+
 		}
 		else
 		{
@@ -114,6 +111,18 @@ void main()
 			xSpd = 0;
 			ySpd = 0;
 		}
+
+			if (fire == true)
+			{
+				bulletF(bullet, bX * acc, bY);
+
+				if (bX > 660)
+				{
+					fire = false;
+					float bX = sX + 70;
+					float bY = sY + 3;
+				}
+			}
 		/*else
 			{
 				sfw::drawTexture(d, sX, sY, 100, 64, 0, true, acc * 15);
